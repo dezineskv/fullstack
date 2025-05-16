@@ -14,7 +14,9 @@ export const ProdContext = createContext();
 function App() {
   const localData = localStorage.getItem("products");
   const data = JSON.parse(localData) || [];
+
   const [products, setProducts] = useState([]);
+  const [singleProduct, setSingleProduct] = useState();
 
   return (
     <ProdContext.Provider value={[products, setProducts]}>

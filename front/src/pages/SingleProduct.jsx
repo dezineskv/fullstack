@@ -39,7 +39,7 @@ function SingleProduct() {
       .delete(`http://localhost:3000/products/${id}`)
       .then((response) => {
         setSingleProduct(response.data.data);
-
+        toast.success("Product Successfully Deleted!");
         console.log(response.data);
       })
       .catch((error) => {
@@ -68,7 +68,12 @@ function SingleProduct() {
 
   return (
     <>
-      <div>Product {singleProduct.title} Deleted</div>
+      <br />
+      <div className="max-w-[1440px] flex flex-col justify-center align-middle mx-auto text-center">
+        Product {singleProduct.title} Deleted
+        <br />
+        <Link to="/products">All Products</Link>
+      </div>
       {/* <div className="text-center mx-auto w-full flex ">
         <div className="max-w[1440px] mx-auto">
           <h1>Product Details</h1>
@@ -108,8 +113,6 @@ function SingleProduct() {
           </div>
         </div>
       </div> */}
-      <br />
-      <Link to="/products">All Products</Link>
     </>
   );
 }

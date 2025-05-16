@@ -7,7 +7,6 @@ function Home() {
   return (
     <>
       <div className="bg-slate-500 flex flex-row w-full h-full">
-        <Link to="/products">See all products</Link>
       </div>
       <ProductsList />
     </>
