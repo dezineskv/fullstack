@@ -6,7 +6,7 @@ import "../styles/global.css";
 import { ProdContext } from "../App";
 import toast from "react-hot-toast";
 
-function SingleProduct() {
+function GetProduct() {
   const [products, setProducts] = useContext(ProdContext);
   const [singleProduct, setSingleProduct] = useState();
   //   const [products, setProducts] = useState();
@@ -15,37 +15,36 @@ function SingleProduct() {
 
   const { id } = useParams();
 
-  //   useEffect(() => {
-  //     localStorage.setItem("products", JSON.stringify(products));
-  //   }, [setProducts, products]);
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+  }, [setProducts, products]);
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(`http://localhost:3000/products${id}`)
-  //       .then((response) => {
-  //         setProducts(response.data.data);
-
-  //         setLoading(false); // Set loading to false after fetching
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error fetching products:", error);
-  //         setError("Failed to load products.");
-  //         setLoading(false); // Set loading to false on error
-  //       });
-  //   }, [id, products]);
-
+  // fetch product by id
   useEffect(() => {
     axios
-      .delete(`http://localhost:3000/products/${id}`)
+      .get(`http://localhost:3000/products/${id}`)
       .then((response) => {
         setSingleProduct(response.data.data);
 
-        console.log(response.data);
+        setLoading(false); // Set loading to false after fetching
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
+        setError("Failed to load products.");
+        setLoading(false); // Set loading to false on error
       });
-  }, []); // Empty dependency would mean this runs only once on mount
+  }, [id, products]); // Empty dependency would mean this runs only once on mount
+
+  //   useEffect(() => {
+  //     axios
+  //       .delete(`http://localhost:3000/products/${id}`)
+  //       .then((response) => {
+  //         console.log(response.data);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching products:", error);
+  //       });
+  //   }, []);
 
   //   const deleteProduct = (id) => {
   //     // e.prevent.default()
@@ -54,9 +53,9 @@ function SingleProduct() {
   //     toast.success("Product Successfully Deleted!");
   //   };
 
-  //   if (loading) {
-  //     return <div>Loading product...</div>;
-  //   }
+  if (loading) {
+    return <div>Loading product...</div>;
+  }
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -68,8 +67,7 @@ function SingleProduct() {
 
   return (
     <>
-      <div>Product {singleProduct.title} Deleted</div>
-      {/* <div className="text-center mx-auto w-full flex ">
+      <div className="text-center mx-auto w-full flex ">
         <div className="max-w[1440px] mx-auto">
           <h1>Product Details</h1>
           <div className="text-black mx-auto pb-4 border-2 border-gray rounded-lg border-r-4 overflow-hidden shadow-lg ">
@@ -92,26 +90,22 @@ function SingleProduct() {
               </div>
             </div>
             <div className="px-6 mt-4 pt-8 pb-2 mb-4">
-              <button
-                // onClick={deleteProduct}
+              {/* <button
                 onClick={(id) => deleteProduct(singleProduct)}
                 className="rounded-full bg-black"
               >
                 Delete
-              </button>
-              <br />
-              <br />
+              </button> */}
             </div>
           </div>
           <div className="px-6 mt-4 pt-8 pb-2">
-           
+            <br />
+            <Link to="/products">All Products</Link>
           </div>
         </div>
-      </div> */}
-      <br />
-      <Link to="/products">All Products</Link>
+      </div>
     </>
   );
 }
 
-export default SingleProduct;
+export default GetProduct;

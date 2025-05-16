@@ -23,9 +23,14 @@ function ProductsList() {
       <div className="max-w-[1440px] flex flex-col justify-center mx-auto text-center">
         <h1 className="text-black">Products</h1>
         {products.map((product) => (
-          <Link key={product._id} to={`/products/${product._id}`}>
-            <div>{product.title}</div>
-          </Link>
+          // <Link key={product._id} to={`/products/delete/${product._id}`}>Delete
+          <div key={product._id}>
+            {product.title}
+            <br />
+            <Link to={`/products/delete/${product._id}`}>Delete</Link>
+            <br />
+            <Link to={`/products/${product._id}`}>See Product</Link>
+          </div>
         ))}
       </div>
     </>

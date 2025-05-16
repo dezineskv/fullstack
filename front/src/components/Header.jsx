@@ -10,7 +10,7 @@ const Header = () => {
         <div>
           <a
             href="/"
-            NameName="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
           >
             Home
           </a>

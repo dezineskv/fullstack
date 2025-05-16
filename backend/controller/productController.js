@@ -58,7 +58,7 @@ const deleteProduct = async (req, res) => {
   res.send({
     data: result,
     status: 200,
-    message: "product deleted successfully",
+    message: "Product deleted successfully",
   });
 };
 
