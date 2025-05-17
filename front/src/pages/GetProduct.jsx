@@ -84,7 +84,8 @@ function GetProduct() {
                   {singleProduct.title}
                 </h4>
                 <p className="text-black text-base">
-                  {singleProduct.description}
+                  {singleProduct.description}<br/>
+                  Details about this product coming soon...
                 </p>
                 <h3 className="text-black text-base">${singleProduct.price}</h3>
               </div>

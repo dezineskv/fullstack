@@ -12,9 +12,8 @@ const Header = () => {
             href="/"
             className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
           >
-            <Link to="/">
+           
               <img src="/images/logo_white.png" alt="logo" />
-            </Link>
           </a>
         </div>
         <div className="w-[100px]">

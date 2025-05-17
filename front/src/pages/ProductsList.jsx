@@ -26,9 +26,14 @@ function ProductsList() {
 
   return (
     <>
-      <div className="max-w-[1440px] flex flex-col justify-center mx-auto text-center">
-        <h1 className="text-black">Products</h1>
-        {products.map((product) => (
+      <div
+        className="w-full flex flex-col mx-auto justify-center"
+        style={{ paddingTop: "2rem" }}
+      >
+        <div className="max-w-[1440px] flex flex-col justify-center mx-auto sm: ml-8">
+          <h1 className="text-black text-center">Products</h1>
+          <div className="max-w-[1440px] flex flex-row justify-start gap-4 flex-wrap mr-4 pr-4">
+            {/* {products.map((product) => (
           // <Link key={product._id} to={`/products/delete/${product._id}`}>Delete
           <div
             key={product._id}
@@ -40,16 +45,48 @@ function ProductsList() {
             </div>
             <div>
               <Link to={`/products/delete/${product._id}`}>Delete</Link>
-              {/* <button
-                onClick={() => {
-                  deleteProduct();
-                }}
-              >
-                Delete Product
-              </button> */}
-            </div>
+              </div>
           </div>
-        ))}
+        ))} */}
+            {products.map((product) => (
+              <div
+                key={product._id}
+                className="text-black gap-4 pr-2 mr-4 my-4 border-1 border-gray rounded-lg overflow-hidden shadow-lg mb-4 pb-4"
+                style={{ marginBottom: "2rem", marginRight: "2rem" }}
+              >
+                <div className="w-[320px]">
+                  <div className="mx-auto text-center py-6 pl-6 pr-6">
+                    {product.title}
+                  </div>
+                  <div className="mx-auto pt-6 pl-6 pr-6 pb-0">
+                    <img
+                      className="prod-img mx-auto"
+                      src={product.img}
+                      alt="product image"
+                    />
+                  </div>
+                  <div
+                    className="align-middle pl-4 ml-4"
+                    style={{ paddingLeft: "1rem" }}
+                  >
+                    <h4 className="text-black font-bold text-xl mb-2">
+                      {product.title}
+                    </h4>
+                    <p className="text-black text-base">
+                      {product.description}
+                    </p>
+                    <h3 className="text-black text-base">${product.price}</h3>
+                    <br />
+                    <div className="flex flex-row justify-between" style={{paddingRight: '1rem'}}>
+                      <Link to={`/products/${product._id}`}>See Product</Link>
+                      <Link to={`/products/delete/${product._id}`}>Delete</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
